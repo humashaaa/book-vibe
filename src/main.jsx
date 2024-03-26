@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import ListedBook from './Pages/ListedBook';
 import ReadPages from './Pages/ReadPages';
-import MainLayout from './layouts.jsx/MainLayout';
+import MainLayout from './layouts/MainLayout';
 import Home from './Pages/Home';
 
 const router = createBrowserRouter([
@@ -16,7 +16,8 @@ const router = createBrowserRouter([
     element: <MainLayout></MainLayout>,
     children:[{
       index:true,
-      element:<Home></Home>
+      element:<Home></Home>,
+      loader: ()=> fetch('/public/bookname.json'),
     },
       {
       path: "/listedbook",
