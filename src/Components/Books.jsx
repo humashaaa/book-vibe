@@ -1,8 +1,10 @@
+
 import { useLoaderData } from "react-router-dom";
 import BookCard from "./BookCard";
 
 const Books = () => {
-    const books = useLoaderData()
+    const listedBooks = useLoaderData()
+    // console.log(listedBooks)
 
     return (
         <section className="dark:bg-gray-100 dark:text-gray-800">
@@ -11,7 +13,7 @@ const Books = () => {
             <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
              
               {
-                books.map(book => <BookCard key={book.id} book={book}></BookCard>)
+                listedBooks.map(book => <BookCard key={book.id} book={book}></BookCard>)
 
               }
                 

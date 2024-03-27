@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
-
 const BookCard = ({book}) => {
-    const{ bookId, bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing} = book;
+     const{ bookId, bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing} = book;
+    
     return (
-        <Link to='/' className="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-slate-100 p-5 rounded-3xl flex flex-col justify-between ">
-        <img role="presentation" className="object-cover w-full rounded h-44 dark:bg-gray-500" src="https://source.unsplash.com/random/480x360?1" />
+        <Link 
+        to={`/${bookId}`}
+         className="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-slate-100 p-5 rounded-3xl flex flex-col justify-between hover:border-2 transition hover:scale-105 hover:border-green-500 ">
+        <img role="presentation" className="object-cover w-96 h-96 rounded  0" src={image}
+         />
         <div className="p-6 space-y-2">
             {/* tags */}
             <div className="flex items-center gap-3">
                 {
-                    tags.map(tag => <p className="text-green-500  ">{tag}</p>)
+                    tags.map(tag => <p key={bookId} className="text-green-500  ">{tag}</p>)
                 }
             </div>
             <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{bookName}</h3>

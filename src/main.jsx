@@ -9,23 +9,48 @@ import ListedBook from './Pages/ListedBook';
 import ReadPages from './Pages/ReadPages';
 import MainLayout from './layouts/MainLayout';
 import Home from './Pages/Home';
+import Details from './Components/Details';
+import ListedCard from './Components/ListedCard';
+import Wishlist from './Components/Wishlist';
+// import ErrorPge from './Pages/ErrorPge';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    // errorElement:<ErrorPge></ErrorPge>,
     children:[{
-      index:true,
+      path: "/",
       element:<Home></Home>,
       loader: ()=> fetch('/public/bookname.json'),
     },
       {
+      path: "/:bookId",
+      element: <Details></Details>,
+      loader: () =>fetch(`/public/bookname.json`),
+    },
+      {
       path: "/listedbook",
       element: <ListedBook></ListedBook>,
+      loader: ()=> fetch('/public/bookname.json'),
+      children: [
+        {
+          index:true,
+          element: <ListedCard></ListedCard>
+        },
+        {
+          path: 'wishList',
+          element: <Wishlist></Wishlist>,
+        },
+      ]
+
+      
     },
     {
       path: "/readpages",
       element: <ReadPages></ReadPages>,
+      loader: ()=> fetch('/public/bookname.json'),
+
     }]
   }
   
