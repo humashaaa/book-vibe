@@ -1,7 +1,7 @@
 
 const Wishlist = () => {
     return (
-        <div className="mt-32">
+        <div className="mt-20">
             <h1>hiiii</h1>
         </div>
     );

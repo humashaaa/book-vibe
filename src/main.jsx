@@ -36,7 +36,8 @@ const router = createBrowserRouter([
       children: [
         {
           index:true,
-          element: <ListedCard></ListedCard>
+          element: <ListedCard></ListedCard>,
+          loader: ()=> fetch('/public/bookname.json'),
         },
         {
           path: 'wishList',

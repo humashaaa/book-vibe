@@ -1,16 +1,33 @@
+import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import { getStoredBooklist } from "../Localstorage";
+import BookItem from "./BookItem";
 
 const ListedCard = () => {
+
+    const [readBooklist, setReadBooklist] = useState([])
+
+
+    
+
+    const books = useLoaderData();
+    useEffect(()=> {
+        const storedBookids = getStoredBooklist()
+        if(books.length > 0){
+            const myBooklist = books.filter(book => storedBookids.includes(book.bookId))
+            // console.log(books, storedBookids, myBooklist)
+            setReadBooklist(myBooklist);
+
+        }
+
+    },[]);
+
     return (
-        <div className="card card-side bg-base-100 shadow-xl">
-        <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"/></figure>
-        <div className="card-body">
-          <h2 className="card-title">New movie is released!</h2>
-          <p>Click the button to watch on Jetflix app.</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Watch</button>
-          </div>
+        <div className="space-y-4">
+            {
+                readBooklist.map((booklist, index) => <BookItem booklist={booklist} key={index}></BookItem>)
+            }
         </div>
-      </div>
     );
 };
 
