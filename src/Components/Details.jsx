@@ -1,8 +1,9 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { saveBooklist } from "../Localstorage";
+import { getStoredBooklist, saveBooklist } from "../Localstorage";
 import { saveWishlist } from "../Localstorage2";
+import { useEffect, useState } from "react";
 
 
 
@@ -15,18 +16,48 @@ const Details = () => {
 
     const{ bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing} = book;
     
+    
+    const [toastVisible, setToastVisible] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false); 
 
+
+  
+  const [readBooklist, setReadBooklist] = useState([])
+  const storedBookids = getStoredBooklist()
+  
+
+  useEffect(()=> {
+    if(books.length > 0){
+        const myBooklist = books.filter(book => storedBookids.includes(book.bookId))
+        setReadBooklist(myBooklist);
+    }
+
+},[storedBookids, books]);
 
     const handleRead = () =>{
-      saveBooklist(bookIdInt)
+
+      // if()
+
+     
+    
+
+
+
+
+
 
       toast('added to the reading list')
+
+      saveBooklist(bookIdInt)
+
     }
     const handleWishlist = () =>{
       saveWishlist(bookIdInt)
 
       toast('added to the wishlist')
     }
+
+    
 
     
     return (
@@ -56,8 +87,9 @@ const Details = () => {
             <p className="font-medium text-gray-500">Rating: <span className=" text-black">{totalPages}</span></p>
             <div className="space-x-3">
             <button onClick={handleRead}  className="btn btn-outline btn-success">Read</button>
-            <button onClick={handleWishlist}  className="btn btn-outline btn-warning  text-white">Wishlist</button>
+            <button onClick={handleWishlist}   className="btn btn-outline btn-warning  text-white">Wishlist</button>
 
+           
             </div>
             <ToastContainer></ToastContainer>
       

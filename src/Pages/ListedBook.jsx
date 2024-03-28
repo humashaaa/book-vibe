@@ -12,13 +12,13 @@ const ListedBook = () => {
   const bookss = useLoaderData();
 
     const [readBooklist, setReadBooklist] = useState([])
-    const [displayBooks, setDisplayBooks] = useState([])
-    const handleBookFilter = filter => {
-      if(filter=== 'rating'){
-        const ratingFilter = books.filter(newbook => newbook.rating === 'rating')
-        setDisplayBooks(ratingFilter)
-      }
-    }
+    // const [displayBooks, setDisplayBooks] = useState([])
+    // const handleBookFilter = filter => {
+    //   if(filter=== 'rating'){
+    //     const ratingFilter = books.filter(newbook => newbook.rating === 'rating')
+    //     setDisplayBooks(ratingFilter)
+    //   }
+    // }
 
     
 
@@ -28,12 +28,12 @@ const ListedBook = () => {
         if(bookss.length > 0){
             const myBooklist = bookss.filter(book => storedBookids.includes(book.bookId))
             setReadBooklist(myBooklist);
-            setDisplayBooks(myBooklist)
+            // setDisplayBooks(myBooklist)
 
         }
 
     },[ bookss]);
-
+// 
     const [readWishlist, setReadWishlist] = useState( [])
     const books = useLoaderData();
 
@@ -58,7 +58,7 @@ const ListedBook = () => {
         <details className="dropdown ml-96">
   <summary className=" m-10 btn bg-green-500 text-white">Sort By</summary>
   <ul className="p-2 shadow menu dropdown-content z-[1] bg-slate-200 rounded-box w-52">
-    <li onClick={()=>handleBookFilter('rating')}>Rating</li>
+    <li >Rating</li>
     <li>Number of pages</li>
     <li><a>Publisher year</a></li>
   </ul>
@@ -77,7 +77,7 @@ const ListedBook = () => {
     <TabPanel>
       <ul className="space-y-3">
       {/* readBooklist */}
-          {displayBooks.map((book) => (
+          {readBooklist.map((book) => (
             <li key={book.bookId}><BookItem booklist={book}></BookItem></li>
           ))}
         </ul>
