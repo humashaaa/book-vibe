@@ -5,7 +5,9 @@ import { MdOutlineContactPage } from "react-icons/md";
 
 const BookItem = ({booklist}) => {
     const{ bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing, bookId} = booklist;
+
     
+   
     return (
         <div>
             <div className="card card-side bg-base-100 shadow-lg">

@@ -11,8 +11,8 @@ import MainLayout from './layouts/MainLayout';
 import Home from './Pages/Home';
 import Details from './Components/Details';
 import ListedCard from './Components/ListedCard';
-import Wishlist from './Components/Wishlist';
-import BookItem from './Components/BookItem';
+// import Wishlist from './Components/Wishlist';
+// import BookItem from './Components/BookItem';
 import WishlistedCard from './Components/WishlistedCard';
 // import ErrorPge from './Pages/ErrorPge';
 

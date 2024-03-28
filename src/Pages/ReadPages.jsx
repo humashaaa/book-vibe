@@ -1,5 +1,10 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData} from 'react-router-dom';
+import { getStoredBooklist } from '../Localstorage';
+
+
+
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { useEffect, useState } from 'react';
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
 
@@ -20,14 +25,30 @@ const getPath = (x, y, width, height) => {
 const ReadPages = () => {
 
     const books = useLoaderData()
+
     // const{ bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing} = booklist;
+
+    const [readBooklist, setReadBooklist] = useState([])
+    const storedBookids = getStoredBooklist()
+    
+
+    useEffect(()=> {
+      if(books.length > 0){
+          const myBooklist = books.filter(book => storedBookids.includes(book.bookId))
+          setReadBooklist(myBooklist);
+      }
+
+  },[storedBookids, books]);
+
+
 
     return (
         <div className='mt-24 ml-20'>
             <BarChart
       width={1300}
       height={500}
-      data={books}
+      data={readBooklist}
+      
       margin={{
         top: 20,
         right: 30,
