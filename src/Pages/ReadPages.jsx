@@ -20,6 +20,7 @@ const getPath = (x, y, width, height) => {
 const ReadPages = () => {
 
     const books = useLoaderData()
+    // const{ bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing} = booklist;
 
     return (
         <div className='mt-24 ml-20'>

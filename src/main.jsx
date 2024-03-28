@@ -12,6 +12,8 @@ import Home from './Pages/Home';
 import Details from './Components/Details';
 import ListedCard from './Components/ListedCard';
 import Wishlist from './Components/Wishlist';
+import BookItem from './Components/BookItem';
+import WishlistedCard from './Components/WishlistedCard';
 // import ErrorPge from './Pages/ErrorPge';
 
 const router = createBrowserRouter([
@@ -36,12 +38,14 @@ const router = createBrowserRouter([
       children: [
         {
           index:true,
-          element: <ListedCard></ListedCard>,
+          element:<ListedCard></ListedCard>,
           loader: ()=> fetch('/public/bookname.json'),
         },
         {
           path: 'wishList',
-          element: <Wishlist></Wishlist>,
+          element: <WishlistedCard></WishlistedCard>,
+          loader: ()=> fetch('/public/bookname.json'),
+
         },
       ]
 
