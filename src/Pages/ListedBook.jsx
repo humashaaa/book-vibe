@@ -9,30 +9,44 @@ import { getStoredWishlist } from "../Localstorage2";
 
 
 const ListedBook = () => {
-    
+  const bookss = useLoaderData();
+
     const [readBooklist, setReadBooklist] = useState([])
-    const bookss = useLoaderData();
+    const [displayBooks, setDisplayBooks] = useState([])
+    const handleBookFilter = filter => {
+      if(filter=== 'rating'){
+        const ratingFilter = books.filter(newbook => newbook.rating === 'rating')
+        setDisplayBooks(ratingFilter)
+      }
+    }
+
+    
+
     useEffect(()=> {
-        const storedBookids = getStoredBooklist()
+      const storedBookids = getStoredBooklist()
+
         if(bookss.length > 0){
             const myBooklist = bookss.filter(book => storedBookids.includes(book.bookId))
             setReadBooklist(myBooklist);
+            setDisplayBooks(myBooklist)
 
         }
 
-    },[]);
+    },[ bookss]);
 
     const [readWishlist, setReadWishlist] = useState( [])
     const books = useLoaderData();
+
     useEffect(()=> {
-        const storedBookids =getStoredWishlist()
+      const storedBookids =getStoredWishlist()
+
         if(books.length > 0){
             const myWishlist = books.filter(book => storedBookids.includes(book.bookId))
             setReadWishlist(myWishlist);
 
         }
 
-    },[]);
+    },[books]);
     
     return (
        <div>
@@ -41,8 +55,17 @@ const ListedBook = () => {
         </div>
         {/* short by button */}
 
+        <details className="dropdown ml-96">
+  <summary className=" m-10 btn bg-green-500 text-white">Sort By</summary>
+  <ul className="p-2 shadow menu dropdown-content z-[1] bg-slate-200 rounded-box w-52">
+    <li onClick={()=>handleBookFilter('rating')}>Rating</li>
+    <li>Number of pages</li>
+    <li><a>Publisher year</a></li>
+  </ul>
+</details>
+
         {/* tabs */}
-       <div className="top-14">
+       <div className="top-14 ml-10 mb-10">
      
 
 <Tabs>
@@ -53,7 +76,8 @@ const ListedBook = () => {
 
     <TabPanel>
       <ul className="space-y-3">
-          {readBooklist.map((book) => (
+      {/* readBooklist */}
+          {displayBooks.map((book) => (
             <li key={book.bookId}><BookItem booklist={book}></BookItem></li>
           ))}
         </ul>

@@ -23,7 +23,7 @@ const Nav = () => {
      
     </ul>
     {/* button */}
-    <div className="space-x-3">
+    <div className="space-x-3 bg-blue-400">
     <button className="btn btn-xs sm:btn-sm md:btn-md bg-green-500  lg:btn-lg">Sign in</button>
     <button className="btn btn-xs sm:btn-sm bg-blue-400 md:btn-md lg:btn-lg">Sign up</button>
     </div>
