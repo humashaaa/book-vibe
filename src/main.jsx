@@ -14,13 +14,15 @@ import ListedCard from './Components/ListedCard';
 // import Wishlist from './Components/Wishlist';
 // import BookItem from './Components/BookItem';
 import WishlistedCard from './Components/WishlistedCard';
-// import ErrorPge from './Pages/ErrorPge';
+import ErrorPge from './Pages/ErrorPge';
+import Faq from './Components/Faq';
+import Contact from './Components/Contact';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    // errorElement:<ErrorPge></ErrorPge>,
+    errorElement:<ErrorPge></ErrorPge>,
     children:[{
       path: "/",
       element:<Home></Home>,
@@ -56,7 +58,16 @@ const router = createBrowserRouter([
       element: <ReadPages></ReadPages>,
       loader: ()=> fetch('/public/bookname.json'),
 
-    }]
+    },
+    {
+      path: "/faq",
+      element: <Faq></Faq>,
+    },
+    {
+      path: "/contact",
+      element: <Contact></Contact>,
+    },
+  ]
   }
   
 ]);

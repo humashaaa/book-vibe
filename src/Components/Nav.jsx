@@ -16,6 +16,10 @@ const Nav = () => {
      
         <NavLink to='/readpages' className={({ isActive }) => isActive ? "text-green-600 border-green-400 border-2 font-bold rounded-lg p-2" : "font-bold"
   }>Read Pages</NavLink>
+        <NavLink to='/faq' className={({ isActive }) => isActive ? "text-green-600 border-green-400 border-2 font-bold rounded-lg p-2" : "font-bold"
+  }>FAQ</NavLink>
+        <NavLink to='/contact' className={({ isActive }) => isActive ? "text-green-600 border-green-400 border-2 font-bold rounded-lg p-2" : "font-bold"
+  }>Contact us</NavLink>
      
     </ul>
     {/* button */}

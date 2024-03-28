@@ -26,7 +26,6 @@ const ReadPages = () => {
 
     const books = useLoaderData()
 
-    // const{ bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing} = booklist;
 
     const [readBooklist, setReadBooklist] = useState([])
     const storedBookids = getStoredBooklist()
@@ -47,7 +46,7 @@ const ReadPages = () => {
             <BarChart
       width={1300}
       height={500}
-      data={readBooklist}
+      data={readBooklist} 
       
       margin={{
         top: 20,
