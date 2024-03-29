@@ -12,13 +12,7 @@ const ListedBook = () => {
   const bookss = useLoaderData();
 
     const [readBooklist, setReadBooklist] = useState([])
-    // const [displayBooks, setDisplayBooks] = useState([])
-    // const handleBookFilter = filter => {
-    //   if(filter=== 'rating'){
-    //     const ratingFilter = books.filter(newbook => newbook.rating === 'rating')
-    //     setDisplayBooks(ratingFilter)
-    //   }
-    // }
+    
 
     
 
